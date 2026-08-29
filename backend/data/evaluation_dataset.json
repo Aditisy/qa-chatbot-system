@@ -1,0 +1,47 @@
+{
+  "ir_questions": [
+    {"question": "Who developed the theory of relativity?", "expected_answer": "Albert Einstein"},
+    {"question": "When was the special theory of relativity published?", "expected_answer": "1905"},
+    {"question": "Where was Albert Einstein born?", "expected_answer": "Ulm, Germany"},
+    {"question": "Who formulated the law of universal gravitation?", "expected_answer": "Isaac Newton"},
+    {"question": "When did Newton publish his law of gravitation?", "expected_answer": "1687"},
+    {"question": "When did World War II begin?", "expected_answer": "1939"},
+    {"question": "When did World War II end in Europe?", "expected_answer": "May 8, 1945"},
+    {"question": "Who was the Prime Minister of the United Kingdom during World War II?", "expected_answer": "Winston Churchill"},
+    {"question": "When did India gain independence?", "expected_answer": "August 15, 1947"},
+    {"question": "Who led the non-violent independence movement in India?", "expected_answer": "Mahatma Gandhi"},
+    {"question": "Who designed the Eiffel Tower?", "expected_answer": "Gustave Eiffel"},
+    {"question": "When was the Eiffel Tower completed?", "expected_answer": "1889"},
+    {"question": "Who created Python?", "expected_answer": "Guido van Rossum"},
+    {"question": "When was Python first released?", "expected_answer": "1991"},
+    {"question": "Who founded Microsoft?", "expected_answer": "Bill Gates and Paul Allen"},
+    {"question": "Who is the CEO of Microsoft?", "expected_answer": "Satya Nadella"},
+    {"question": "What is NLP?", "expected_answer": "Natural Language Processing"}
+  ],
+  "kb_questions": [
+    {"question": "What are the symptoms of Diabetes?", "expected_answer": "Frequent urination"},
+    {"question": "What causes Hypertension?", "expected_answer": "High salt intake"},
+    {"question": "How is Asthma treated?", "expected_answer": "Inhaled corticosteroids"},
+    {"question": "Which doctor should I see for Migraine?", "expected_answer": "Neurologist"},
+    {"question": "How can I prevent the Common Cold?", "expected_answer": "handwashing"},
+    {"question": "What are the symptoms of Influenza?", "expected_answer": "Fever"},
+    {"question": "What causes Malaria?", "expected_answer": "Plasmodium parasite"},
+    {"question": "Which specialist treats Tuberculosis?", "expected_answer": "Pulmonologist"},
+    {"question": "How is Pneumonia treated?", "expected_answer": "Antibiotics"},
+    {"question": "What are the symptoms of Anemia?", "expected_answer": "Fatigue"},
+    {"question": "Which doctor treats Arthritis?", "expected_answer": "Rheumatologist"},
+    {"question": "What is the treatment for Depression?", "expected_answer": "Psychotherapy"},
+    {"question": "How can I prevent Insomnia?", "expected_answer": "regular sleep schedule"},
+    {"question": "What causes Obesity?", "expected_answer": "Poor diet"},
+    {"question": "How can I prevent Chickenpox?", "expected_answer": "vaccination"}
+  ],
+  "dialogue_examples": [
+    {"turn": 1, "user": "Hello", "expected_intent": "greeting"},
+    {"turn": 2, "user": "What are the symptoms of Diabetes?", "expected_intent": "fact_question", "expected_entity": "Diabetes"},
+    {"turn": 3, "user": "What is its treatment?", "expected_intent": "fact_question", "expected_entity": "Diabetes", "note": "coreference: its -> Diabetes"},
+    {"turn": 4, "user": "What causes Asthma?", "expected_intent": "fact_question", "expected_entity": "Asthma"},
+    {"turn": 5, "user": "Which doctor treats it?", "expected_intent": "fact_question", "expected_entity": "Asthma", "note": "coreference: it -> Asthma"},
+    {"turn": 6, "user": "help", "expected_intent": "help"},
+    {"turn": 7, "user": "bye", "expected_intent": "goodbye"}
+  ]
+}
