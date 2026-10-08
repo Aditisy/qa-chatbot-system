@@ -35,6 +35,17 @@ sub('7.1 Framework Choice')
 p('React and React Router provide five pages: Home, IR-Based QA, Knowledge-Based QA, Chat and Evaluation. Vite proxies local API calls to FastAPI; Tailwind provides the existing dark interface.')
 sub('7.2 Interface Features')
 p('The interface exposes retrieved evidence, pipeline stages, structured records, source badges, chat reset and live evaluation tables. A per-tab session identifier separates conversations. Reset is disabled while an answer is loading.')
+for filename, title, caption in [
+ ('ir-qa.png', 'Website Screenshots - IR-Based QA', 'Figure 1. Live factoid answer: Guido van Rossum, with its source document and confidence display.'),
+ ('chat.png', 'Website Screenshots - Dialogue', 'Figure 2. A healthcare KB query followed by a contextual question using its. The source badges identify the structured knowledge base.')]:
+ page();h(title)
+ from PIL import Image as PILImage
+ shot=ROOT/'output'/filename
+ iw,ih=PILImage.open(shot).size
+ scale=min(WIDTH/iw,590/ih)
+ story.append(Image(str(shot),width=iw*scale,height=ih*scale))
+ p(caption,'small')
+ p('Captured from the running website on '+DATE+'.','small')
 page();h('Sample Input & Output')
 table([['Input','Observed output / behavior'],['Who founded Microsoft?','Bill Gates and Paul Allen'],['Who is the CEO of Microsoft?','Satya Nadella (from the supplied static document)'],['When did World War II end in Europe?','May 8, 1945'],['Who created Python?','Guido van Rossum'],['What are the symptoms of Diabetes?','Returns the symptoms value from the sample CSV; current entity becomes Diabetes.'],['What is its treatment?','Resolves its to Diabetes and queries treatment.'],['Who created Python? (after Diabetes)','Routes to document retrieval and clears the healthcare entity.']],[210,WIDTH-210])
 h('Results (Deliverable-Specific Outputs)')
@@ -49,7 +60,7 @@ if im.exists():
  iw,ih=PILImage.open(im).size
  scale=min(WIDTH/iw,590/ih)
  story.append(Image(str(im),width=iw*scale,height=ih*scale))
- p('Figure 1. Live evaluation page captured on '+DATE+'.','small')
+ p('Figure 3. Live evaluation page captured on '+DATE+'.','small')
 h('Challenges Faced & Solutions')
 p('Incorrect span selection was corrected using agent/subject patterns and event-sensitive ranking. Source attribution now follows the evidence sentence. Alias boundaries prevent accidental disease matches, and unsupported relations no longer default silently to a category. Chat topic changes no longer inherit the previous healthcare entity.')
 page();h('Conclusion')
