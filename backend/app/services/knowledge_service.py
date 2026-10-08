@@ -12,14 +12,15 @@ startup (equivalent in spirit to loading a table from a database/knowledge
 graph), so the query logic itself is agnostic to the storage format.
 """
 import csv
+import re
 
 RELATION_KEYWORDS = {
     "symptoms": ["symptom", "symptoms", "signs", "sign", "how do i know", "feel like"],
     "causes": ["cause", "causes", "caused by", "why do", "reason for", "what causes"],
-    "treatment": ["treatment", "treat", "cure", "medicine", "how to treat", "how is it treated", "remedy"],
+    "treatment": ["treatment", "treated", "treat", "cure", "medicine", "how to treat", "how is it treated", "remedy"],
     "specialist": ["doctor", "specialist", "which doctor", "who should i see", "which physician"],
     "prevention": ["prevent", "prevention", "avoid", "how to avoid", "how can i prevent"],
-    "category": ["type of disease", "category", "what type", "what kind of disease", "what is"],
+    "category": ["type of disease", "category", "what type", "what kind of disease"],
 }
 
 
@@ -54,7 +55,7 @@ class KnowledgeService:
     def detect_entity(self, question: str):
         q_lower = question.lower()
         for alias, canonical in self.alias_lookup:
-            if alias in q_lower:
+            if re.search(r"(?<!\w)" + re.escape(alias) + r"(?!\w)", q_lower):
                 return canonical
         return None
 
@@ -70,9 +71,11 @@ class KnowledgeService:
             if available_relations and relation not in available_relations:
                 continue
             for kw in keywords:
-                if kw in q_lower and len(kw) > best_len:
+                if re.search(r"(?<!\w)" + re.escape(kw) + r"(?!\w)", q_lower) and len(kw) > best_len:
                     best_relation = relation
                     best_len = len(kw)
+        if not best_relation and entity and re.fullmatch(r"what is " + re.escape(entity.lower()) + r"[?.!]*", q_lower.strip()):
+            return "category"
         return best_relation
 
     def query(self, question: str, context_entity: str = None):
@@ -102,11 +105,9 @@ class KnowledgeService:
         relation = self.detect_relation(question, entity)
         pipeline_steps.append({
             "step": "Relation Detection",
-            "detail": f"Detected relation: {relation}" if relation else "No matching relation keyword found; defaulting to overview."
+            "detail": f"Detected relation: {relation}" if relation else "No supported relation found; ask about symptoms, causes, treatment, specialist, prevention or category."
         })
 
-        if not relation:
-            relation = "category"
 
         if relation not in self.entities[entity]["relations"] or not self.entities[entity]["relations"][relation]:
             pipeline_steps.append({"step": "Result", "detail": f"No stored value for relation '{relation}' on '{entity}'."})
@@ -139,15 +140,7 @@ class KnowledgeService:
 
     @staticmethod
     def _to_natural_language(entity, relation, value):
-        templates = {
-            "symptoms": f"Common symptoms of {entity} include: {value}.",
-            "causes": f"{entity} is typically caused by: {value}.",
-            "treatment": f"{entity} is usually treated with: {value}.",
-            "specialist": f"For {entity}, you should typically consult a {value}.",
-            "prevention": f"{entity} can be prevented by: {value}.",
-            "category": f"{entity} is classified as a {value}.",
-        }
-        return templates.get(relation, f"{entity}'s {relation} is {value}.")
+        return f"The educational sample KB lists {entity} ({relation}): {value}."
 
     def list_entities(self):
         return [

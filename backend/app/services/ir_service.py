@@ -4,6 +4,7 @@ IR-based QA pipeline orchestration:
   Question -> Preprocessing -> Document Retrieval (TF-IDF) ->
   Passage Ranking -> Sentence Selection -> Extractive Answer -> Evidence
 """
+import re
 from .retrieval import TfidfRetriever
 from .qa_service import extract_answer, score_sentence_overlap
 
@@ -71,12 +72,20 @@ class IRService:
         for doc in retrieved_docs:
             sents = self.retriever.retrieve_sentences(clean_q, top_k=3, doc_id=doc["doc_id"])
             candidate_sentences.extend(sents)
+        # Reward the requested event, so begin/end questions do not share evidence.
+        events = {"end": r"\bend(?:ed|s)?\b", "begin": r"\b(?:began|begin|started)\b"}
+        for term, pattern in events.items():
+            if re.search(r"\b" + term + r"\b", clean_q, re.I):
+                for sentence in candidate_sentences:
+                    if re.search(pattern, sentence["text"], re.I):
+                        sentence["score"] += 0.35
         candidate_sentences.sort(key=lambda s: s["score"], reverse=True)
 
         if not candidate_sentences:
             best_sentence_text = best_doc["text"]
             sent_score = best_doc["score"]
         else:
+            best_doc = next(d for d in retrieved_docs if d["doc_id"] == candidate_sentences[0]["doc_id"])
             best_sentence_text = candidate_sentences[0]["text"]
             sent_score = candidate_sentences[0]["score"]
 

@@ -41,11 +41,11 @@ def f1_score(pred: str, gold: str) -> float:
 
 
 def partial_match(pred: str, gold: str) -> int:
-    """A softer accuracy signal: gold answer text appears within predicted text or vice versa."""
+    """A softer accuracy signal: complete gold phrase appears as tokens within predicted text."""
     p, g = _normalize(pred), _normalize(gold)
     if not p or not g:
         return 0
-    return int(g in p or p in g)
+    return int((" " + g + " ") in (" " + p + " "))
 
 
 class Evaluator:
@@ -64,7 +64,7 @@ class Evaluator:
             pred = result.get("answer") or ""
             em = exact_match(pred, item["expected_answer"])
             f1 = f1_score(pred, item["expected_answer"])
-            correct = bool(em or partial_match(pred, item["expected_answer"]))
+            correct = bool(em)
             em_scores.append(em)
             f1_scores.append(f1)
             rows.append({
@@ -110,11 +110,15 @@ class Evaluator:
         correct = 0
         # Fresh isolated session for repeatable evaluation
         session_id = "__evaluation_session__"
-        self.dialogue_manager.reset_session(session_id)
+        from .dialogue_manager import DialogueManager
+        manager = DialogueManager(self.knowledge_service, self.ir_service)
+        entity_checks = []
         for item in self.dataset["dialogue_examples"]:
-            result = self.dialogue_manager.handle_message(session_id, item["user"])
+            result = manager.handle_message(session_id, item["user"])
             predicted_intent = result["intent"]
             is_correct = predicted_intent == item["expected_intent"]
+            entity_ok = item.get("expected_entity") == result["session_state"]["current_entity"] if "expected_entity" in item else True
+            if "expected_entity" in item: entity_checks.append(entity_ok)
             correct += int(is_correct)
             rows.append({
                 "turn": item["turn"],
@@ -122,11 +126,14 @@ class Evaluator:
                 "expected_intent": item["expected_intent"],
                 "predicted_intent": predicted_intent,
                 "response": result["response"],
-                "correct": is_correct,
+                "correct": is_correct and entity_ok,
+                "context_correct": entity_ok,
             })
         n = max(1, len(rows))
         return {
             "intent_accuracy": round(correct / n, 3),
+            "context_accuracy": round(sum(entity_checks) / max(1, len(entity_checks)), 3),
+            "context_total": len(entity_checks),
             "total": len(rows),
             "rows": rows,
         }

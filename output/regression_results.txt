@@ -1,0 +1,14 @@
+test_alias_boundaries (test_regressions.RegressionTests.test_alias_boundaries) ... ok
+test_api (test_regressions.RegressionTests.test_api) ... ok
+test_compound_founders (test_regressions.RegressionTests.test_compound_founders) ... ok
+test_context_and_topic_switch (test_regressions.RegressionTests.test_context_and_topic_switch) ... ok
+test_end_is_question (test_regressions.RegressionTests.test_end_is_question) ... ok
+test_evidence_belongs_to_source (test_regressions.RegressionTests.test_evidence_belongs_to_source) ... ok
+test_partial_answer_cannot_pass (test_regressions.RegressionTests.test_partial_answer_cannot_pass) ... ok
+test_role_subject (test_regressions.RegressionTests.test_role_subject) ... ok
+test_unsupported_relation (test_regressions.RegressionTests.test_unsupported_relation) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.049s
+
+OK

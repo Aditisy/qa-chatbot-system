@@ -1,0 +1,312 @@
+{
+  "ir": {
+    "exact_match": 1.0,
+    "f1": 1.0,
+    "total": 17,
+    "rows": [
+      {
+        "question": "Who developed the theory of relativity?",
+        "expected_answer": "Albert Einstein",
+        "system_answer": "Albert Einstein",
+        "exact_match": true,
+        "f1": 1.0,
+        "correct": true
+      },
+      {
+        "question": "When was the special theory of relativity published?",
+        "expected_answer": "1905",
+        "system_answer": "1905",
+        "exact_match": true,
+        "f1": 1.0,
+        "correct": true
+      },
+      {
+        "question": "Where was Albert Einstein born?",
+        "expected_answer": "Ulm, Germany",
+        "system_answer": "Ulm, Germany",
+        "exact_match": true,
+        "f1": 1.0,
+        "correct": true
+      },
+      {
+        "question": "Who formulated the law of universal gravitation?",
+        "expected_answer": "Isaac Newton",
+        "system_answer": "Isaac Newton",
+        "exact_match": true,
+        "f1": 1.0,
+        "correct": true
+      },
+      {
+        "question": "When did Newton publish his law of gravitation?",
+        "expected_answer": "1687",
+        "system_answer": "1687",
+        "exact_match": true,
+        "f1": 1.0,
+        "correct": true
+      },
+      {
+        "question": "When did World War II begin?",
+        "expected_answer": "1939",
+        "system_answer": "1939",
+        "exact_match": true,
+        "f1": 1.0,
+        "correct": true
+      },
+      {
+        "question": "When did World War II end in Europe?",
+        "expected_answer": "May 8, 1945",
+        "system_answer": "May 8, 1945",
+        "exact_match": true,
+        "f1": 1.0,
+        "correct": true
+      },
+      {
+        "question": "Who was the Prime Minister of the United Kingdom during World War II?",
+        "expected_answer": "Winston Churchill",
+        "system_answer": "Winston Churchill",
+        "exact_match": true,
+        "f1": 1.0,
+        "correct": true
+      },
+      {
+        "question": "When did India gain independence?",
+        "expected_answer": "August 15, 1947",
+        "system_answer": "August 15, 1947",
+        "exact_match": true,
+        "f1": 1.0,
+        "correct": true
+      },
+      {
+        "question": "Who led the non-violent independence movement in India?",
+        "expected_answer": "Mahatma Gandhi",
+        "system_answer": "Mahatma Gandhi",
+        "exact_match": true,
+        "f1": 1.0,
+        "correct": true
+      },
+      {
+        "question": "Who designed the Eiffel Tower?",
+        "expected_answer": "Gustave Eiffel",
+        "system_answer": "Gustave Eiffel",
+        "exact_match": true,
+        "f1": 1.0,
+        "correct": true
+      },
+      {
+        "question": "When was the Eiffel Tower completed?",
+        "expected_answer": "1889",
+        "system_answer": "1889",
+        "exact_match": true,
+        "f1": 1.0,
+        "correct": true
+      },
+      {
+        "question": "Who created Python?",
+        "expected_answer": "Guido van Rossum",
+        "system_answer": "Guido van Rossum",
+        "exact_match": true,
+        "f1": 1.0,
+        "correct": true
+      },
+      {
+        "question": "When was Python first released?",
+        "expected_answer": "1991",
+        "system_answer": "1991",
+        "exact_match": true,
+        "f1": 1.0,
+        "correct": true
+      },
+      {
+        "question": "Who founded Microsoft?",
+        "expected_answer": "Bill Gates and Paul Allen",
+        "system_answer": "Bill Gates and Paul Allen",
+        "exact_match": true,
+        "f1": 1.0,
+        "correct": true
+      },
+      {
+        "question": "Who is the CEO of Microsoft?",
+        "expected_answer": "Satya Nadella",
+        "system_answer": "Satya Nadella",
+        "exact_match": true,
+        "f1": 1.0,
+        "correct": true
+      },
+      {
+        "question": "What is NLP?",
+        "expected_answer": "Natural Language Processing",
+        "system_answer": "Natural Language Processing",
+        "exact_match": true,
+        "f1": 1.0,
+        "correct": true
+      }
+    ]
+  },
+  "kb": {
+    "accuracy": 1.0,
+    "total": 15,
+    "rows": [
+      {
+        "question": "What are the symptoms of Diabetes?",
+        "expected_answer": "Frequent urination",
+        "system_answer": "Frequent urination, increased thirst, fatigue, blurred vision",
+        "correct": true
+      },
+      {
+        "question": "What causes Hypertension?",
+        "expected_answer": "High salt intake",
+        "system_answer": "High salt intake, obesity, stress, genetics, smoking",
+        "correct": true
+      },
+      {
+        "question": "How is Asthma treated?",
+        "expected_answer": "Inhaled corticosteroids",
+        "system_answer": "Inhaled corticosteroids, bronchodilators, avoiding triggers",
+        "correct": true
+      },
+      {
+        "question": "Which doctor should I see for Migraine?",
+        "expected_answer": "Neurologist",
+        "system_answer": "Neurologist",
+        "correct": true
+      },
+      {
+        "question": "How can I prevent the Common Cold?",
+        "expected_answer": "handwashing",
+        "system_answer": "Frequent handwashing, avoiding close contact with infected people",
+        "correct": true
+      },
+      {
+        "question": "What are the symptoms of Influenza?",
+        "expected_answer": "Fever",
+        "system_answer": "Fever, body aches, fatigue, cough, sore throat",
+        "correct": true
+      },
+      {
+        "question": "What causes Malaria?",
+        "expected_answer": "Plasmodium parasite",
+        "system_answer": "Plasmodium parasite transmitted by Anopheles mosquito bites",
+        "correct": true
+      },
+      {
+        "question": "Which specialist treats Tuberculosis?",
+        "expected_answer": "Pulmonologist",
+        "system_answer": "Pulmonologist",
+        "correct": true
+      },
+      {
+        "question": "How is Pneumonia treated?",
+        "expected_answer": "Antibiotics",
+        "system_answer": "Antibiotics, antivirals, rest, oxygen therapy if severe",
+        "correct": true
+      },
+      {
+        "question": "What are the symptoms of Anemia?",
+        "expected_answer": "Fatigue",
+        "system_answer": "Fatigue, pale skin, shortness of breath, dizziness",
+        "correct": true
+      },
+      {
+        "question": "Which doctor treats Arthritis?",
+        "expected_answer": "Rheumatologist",
+        "system_answer": "Rheumatologist",
+        "correct": true
+      },
+      {
+        "question": "What is the treatment for Depression?",
+        "expected_answer": "Psychotherapy",
+        "system_answer": "Psychotherapy, antidepressant medication, lifestyle changes",
+        "correct": true
+      },
+      {
+        "question": "How can I prevent Insomnia?",
+        "expected_answer": "regular sleep schedule",
+        "system_answer": "Maintain regular sleep schedule, avoid screens before bed, limit caffeine",
+        "correct": true
+      },
+      {
+        "question": "What causes Obesity?",
+        "expected_answer": "Poor diet",
+        "system_answer": "Poor diet, lack of physical activity, genetics, hormonal factors",
+        "correct": true
+      },
+      {
+        "question": "How can I prevent Chickenpox?",
+        "expected_answer": "vaccination",
+        "system_answer": "Varicella vaccination, avoiding contact with infected individuals",
+        "correct": true
+      }
+    ]
+  },
+  "dialogue": {
+    "intent_accuracy": 1.0,
+    "context_accuracy": 1.0,
+    "context_total": 4,
+    "total": 7,
+    "rows": [
+      {
+        "turn": 1,
+        "user": "Hello",
+        "expected_intent": "greeting",
+        "predicted_intent": "greeting",
+        "response": "Hello! Ask me a factual question, e.g. 'What is the capital of France?' or 'Who developed the theory of relativity?'",
+        "correct": true,
+        "context_correct": true
+      },
+      {
+        "turn": 2,
+        "user": "What are the symptoms of Diabetes?",
+        "expected_intent": "fact_question",
+        "predicted_intent": "fact_question",
+        "response": "The educational sample KB lists Diabetes (symptoms): Frequent urination, increased thirst, fatigue, blurred vision.",
+        "correct": true,
+        "context_correct": true
+      },
+      {
+        "turn": 3,
+        "user": "What is its treatment?",
+        "expected_intent": "fact_question",
+        "predicted_intent": "fact_question",
+        "response": "The educational sample KB lists Diabetes (treatment): Insulin therapy, metformin, diet control, regular exercise.",
+        "correct": true,
+        "context_correct": true
+      },
+      {
+        "turn": 4,
+        "user": "What causes Asthma?",
+        "expected_intent": "fact_question",
+        "predicted_intent": "fact_question",
+        "response": "The educational sample KB lists Asthma (causes): Allergens, air pollution, respiratory infections, genetics.",
+        "correct": true,
+        "context_correct": true
+      },
+      {
+        "turn": 5,
+        "user": "Which doctor treats it?",
+        "expected_intent": "fact_question",
+        "predicted_intent": "fact_question",
+        "response": "The educational sample KB lists Asthma (specialist): Pulmonologist.",
+        "correct": true,
+        "context_correct": true
+      },
+      {
+        "turn": 6,
+        "user": "help",
+        "expected_intent": "help",
+        "predicted_intent": "help",
+        "response": "I can answer factoid questions using document retrieval (IR-based QA) or a structured knowledge base (Knowledge-based QA). I also remember context, so you can ask follow-ups like 'What is its treatment?'.",
+        "correct": true,
+        "context_correct": true
+      },
+      {
+        "turn": 7,
+        "user": "bye",
+        "expected_intent": "goodbye",
+        "predicted_intent": "goodbye",
+        "response": "Goodbye! Feel free to come back with more questions.",
+        "correct": true,
+        "context_correct": true
+      }
+    ]
+  }
+}

@@ -54,7 +54,7 @@ class DialogueManager:
     @staticmethod
     def detect_intent(text: str) -> str:
         t = text.strip()
-        if GOODBYE_PATTERNS.search(t):
+        if GOODBYE_PATTERNS.fullmatch(t.rstrip(".! ")):
             return "goodbye"
         if HELP_PATTERNS.search(t):
             return "help"
@@ -87,13 +87,13 @@ class DialogueManager:
         elif intent == "help":
             response_text = ("I can answer factoid questions using document retrieval (IR-based QA) "
                               "or a structured knowledge base (Knowledge-based QA). "
-                              "I also remember context, so you can ask follow-ups like 'What is its population?'.")
+                              "I also remember context, so you can ask follow-ups like 'What is its treatment?'.")
         else:
             resolved_message = self.resolve_coreference(message, session)
             was_coreference_resolved = resolved_message != message
 
             # Try Knowledge Base first (structured, higher precision)
-            kb_result = self.knowledge_service.query(resolved_message, context_entity=session.current_entity)
+            kb_result = self.knowledge_service.query(resolved_message, context_entity=None)
 
             if kb_result.get("answer") is not None:
                 response_text = kb_result.get("answer_sentence", str(kb_result["answer"]))
@@ -111,7 +111,8 @@ class DialogueManager:
                 if ir_result.get("answer"):
                     response_text = ir_result["answer"]
                     source = "Document Retrieval"
-                    # Try to keep track of an entity mention for future coreference
+                    session.current_entity = None
+                    # Track only known KB entities for subsequent coreference
                     if kb_result.get("entity"):
                         session.current_entity = kb_result.get("entity")
                     extra = {
@@ -124,6 +125,7 @@ class DialogueManager:
                     response_text = "I couldn't find an answer to that question in the knowledge base or document corpus."
                     source = "Dialogue Manager"
 
+        session.dialogue_context = session.dialogue_context[-4:]
         session.previous_question = message
         session.previous_answer = response_text
         session.dialogue_context.append({"role": "user", "text": message})

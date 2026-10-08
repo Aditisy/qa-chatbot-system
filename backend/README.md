@@ -41,7 +41,7 @@ curl -X POST http://localhost:8000/api/ir/ask \
 
 curl -X POST http://localhost:8000/api/knowledge/ask \
   -H "Content-Type: application/json" \
-  -d '{"question": "What is the capital of France?"}'
+  -d '{"question": "What are the symptoms of Diabetes?"}'
 ```
 
 ## Structure
@@ -66,7 +66,7 @@ backend/
 │       └── registry.py          # Shared service singletons
 ├── data/
 │   ├── ir_documents/            # 8 sample .txt documents (science, history, geography, tech, education)
-│   ├── knowledge_base.json      # 11 entities with relations
+│   ├── healthcare_knowledge_base.csv # 15 diseases, six relations
 │   └── evaluation_dataset.json  # 17 IR Qs, 15 KB Qs, 7 dialogue turns
 └── requirements.txt
 ```

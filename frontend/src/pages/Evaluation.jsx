@@ -93,10 +93,11 @@ export default function Evaluation() {
       <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-8">
         <MetricCard label="IR Exact Match" value={data.ir.exact_match} color="indigo" />
         <MetricCard label="IR F1 Score" value={data.ir.f1} color="indigo" />
-        <MetricCard label="KB Accuracy" value={data.kb.accuracy} color="purple" />
+        <MetricCard label="KB Expected-Fact Coverage" value={data.kb.accuracy} color="purple" />
         <MetricCard label="Dialogue Intent Accuracy" value={data.dialogue.intent_accuracy} color="emerald" />
       </div>
 
+      <p className="text-sm text-slate-400 mt-4">Dialogue context: {data.dialogue.context_accuracy * 100}% over {data.dialogue.context_total} entity checks. These small development sets are not a held-out benchmark. KB coverage checks the complete expected phrase within a longer answer.</p>
       <div className="glass-card rounded-2xl mt-8 overflow-hidden">
         <div className="flex border-b border-white/10">
           {[

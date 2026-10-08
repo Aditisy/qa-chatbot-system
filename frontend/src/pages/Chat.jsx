@@ -2,7 +2,8 @@ import { useState, useRef, useEffect } from 'react'
 import { Send, RotateCcw, Bot, User, Loader2 } from 'lucide-react'
 import { api } from '../services/api'
 
-const SESSION_ID = 'chat-ui-session'
+const SESSION_ID = sessionStorage.getItem('qa-session') || crypto.randomUUID()
+sessionStorage.setItem('qa-session', SESSION_ID)
 
 const STARTER = {
   role: 'assistant',
@@ -71,12 +72,14 @@ export default function Chat() {
         </div>
         <button
           onClick={reset}
+          disabled={loading}
           className="flex items-center gap-1.5 text-xs px-3 py-2 rounded-lg border border-white/10 text-slate-400 hover:text-white hover:bg-white/5 transition-all"
         >
           <RotateCcw size={13} /> Reset
         </button>
       </div>
 
+      <p className="text-xs text-slate-400 mb-4">Educational sample data only; healthcare responses are not medical advice.</p>
       <div className="glass-card rounded-2xl flex flex-col h-[65vh]">
         <div className="flex-1 overflow-y-auto p-5 space-y-4">
           {messages.map((m, i) => (

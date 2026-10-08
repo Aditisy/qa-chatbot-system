@@ -84,6 +84,13 @@ def extract_answer(question: str, sentence: str) -> Tuple[str, float]:
     qtype = _question_type(question)
     question_terms = _extract_proper_nouns(question)  # entities already named in the question
 
+    if qtype == "who":
+        agent = re.search(r"\b(?:founded|developed|created|designed) by (.+?)(?= on | in | and first |[.!]|$)", sentence)
+        if agent:
+            return re.sub(r"^engineer\s+", "", agent.group(1)).strip(), 0.9
+        subject = re.match(r"(.+?) (?:has served|served|is|was) (?:as )?(?:the )", sentence)
+        if subject:
+            return subject.group(1), 0.85
     if qtype == "when":
         m = DATE_PATTERN.search(sentence)
         if m:
