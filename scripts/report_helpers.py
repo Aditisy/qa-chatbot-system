@@ -82,4 +82,3 @@ class NumberedCanvas(canvas.Canvas):
             self.drawCentredString(A4[0]/2,25,f'Page {self._pageNumber} of {total}')
             super().showPage()
         super().save()
-

@@ -193,17 +193,17 @@ Institution | Global Academy of Technology
 Marks Awarded
 
 Sl. No. | Evaluation Criteria | Max Marks | Marks Obtained
-1 | Problem Understanding & Scope | 5 | 
-2 | Pipeline Design & Methodology | 10 | 
-3 | Implementation Correctness | 10 | 
-4 | Use of NLP Tools / Models | 5 | 
-5 | Output Quality / Task Performance | 10 | 
-6 | Analysis & Interpretation | 5 | 
-7 | Documentation & Deliverables | 2.5 | 
-8 | Presentation & Reproducibility | 2.5 | 
- | Total | 50 | 
+1 | Problem Understanding & Scope | 5 |
+2 | Pipeline Design & Methodology | 10 |
+3 | Implementation Correctness | 10 |
+4 | Use of NLP Tools / Models | 5 |
+5 | Output Quality / Task Performance | 10 |
+6 | Analysis & Interpretation | 5 |
+7 | Documentation & Deliverables | 2.5 |
+8 | Presentation & Reproducibility | 2.5 |
+ | Total | 50 |
 
 Overall Comments
 
 Date of Submission | 8 October 2026
-Signature of Faculty | 
+Signature of Faculty |
